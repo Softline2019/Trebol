@@ -1,0 +1,6 @@
+@SoftLine.Trebol.WebAPIRest_HostAddress = http://localhost:5101
+
+GET {{SoftLine.Trebol.WebAPIRest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
