@@ -24,6 +24,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 		.gitignore = .gitignore
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3F811A34-4CA5-4475-BE43-194F543ACB5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftLine.Trebol.WebUI", "src\Presentation\SoftLine.Trebol.WebUI\SoftLine.Trebol.WebUI.csproj", "{64493CB4-DB3A-4653-9424-817FDB46BA47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +50,10 @@ Global
 		{0B722ACC-D599-44A5-8345-02D785C9250A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B722ACC-D599-44A5-8345-02D785C9250A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B722ACC-D599-44A5-8345-02D785C9250A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64493CB4-DB3A-4653-9424-817FDB46BA47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64493CB4-DB3A-4653-9424-817FDB46BA47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64493CB4-DB3A-4653-9424-817FDB46BA47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64493CB4-DB3A-4653-9424-817FDB46BA47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +66,8 @@ Global
 		{0060CD8B-F22E-4125-A4A8-F0453E5F9619} = {82860B31-93D5-4F2A-A3D6-A1E6A1808D7F}
 		{1A55A071-5D24-4B38-85BE-5CBA2D06D148} = {5456675C-29E1-4234-82DB-0F78CE17FA55}
 		{0B722ACC-D599-44A5-8345-02D785C9250A} = {1A55A071-5D24-4B38-85BE-5CBA2D06D148}
+		{3F811A34-4CA5-4475-BE43-194F543ACB5B} = {5456675C-29E1-4234-82DB-0F78CE17FA55}
+		{64493CB4-DB3A-4653-9424-817FDB46BA47} = {3F811A34-4CA5-4475-BE43-194F543ACB5B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E7EDEAB7-7FD4-4D6E-989C-DBE08EA75339}
