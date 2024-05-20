@@ -72,4 +72,5 @@ public class TrebolDbContext : IdentityDbContext<Usuario>
     public DbSet<Image>? Images { get; set; }
     public DbSet<Review>? Reviews { get; set; }
     public DbSet<Country>? Countries { get; set; }
+    public DbSet<Address>? Addresses { get; set; }
 }

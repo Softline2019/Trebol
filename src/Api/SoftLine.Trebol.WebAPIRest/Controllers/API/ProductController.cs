@@ -13,6 +13,7 @@ using System.Net;
 namespace SoftLine.Trebol.WebAPIRest.Controllers.API
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -23,7 +24,7 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
             _mediator = mediator;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("list", Name = "GetProductList")]
         [ProducesResponseType(typeof(IReadOnlyList<ProductVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IReadOnlyList<ProductVm>>> GetProductList()
@@ -33,7 +34,7 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
             return Ok(productos);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("pagination", Name = "PaginationProduct")]
         [ProducesResponseType(typeof(PaginationVm<ProductVm>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<PaginationVm<ProductVm>>> PaginationProduct([FromQuery] PaginationProductsQuery paginationProductParams)
@@ -44,7 +45,7 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
             return Ok(paginationProduct);
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [HttpGet("{id}", Name = "GetProductById")]
         [ProducesResponseType(typeof(ProductVm), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<ProductVm>> GetProductById(int id)
