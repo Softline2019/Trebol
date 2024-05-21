@@ -12,15 +12,15 @@ namespace SoftLine.Trebol.Application.Features.Auths.Users.Commands.LoginUser;
 
 public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, AuthResponse>
 {
-    private readonly UserManager<Usuario> _userManager;
-    private readonly SignInManager<Usuario> _signInManager;
+    private readonly UserManager<User> _userManager;
+    private readonly SignInManager<User> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IAuthService _authService;
     private readonly IMapper _mapper;
 
     private readonly IUnitOfWork _unitOfWork;
 
-    public LoginUserCommandHandler(UserManager<Usuario> userManager, SignInManager<Usuario> signInManager, RoleManager<IdentityRole> roleManager, IAuthService authService, IMapper mapper, IUnitOfWork unitOfWork)
+    public LoginUserCommandHandler(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, IAuthService authService, IMapper mapper, IUnitOfWork unitOfWork)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -32,10 +32,10 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, AuthRes
 
     public async Task<AuthResponse> Handle(LoginUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _userManager.FindByEmailAsync(request.Email);
+        var user = await _userManager.FindByEmailAsync(request.Email!);
         if (user is null)
         {
-            throw new NotFoundException(nameof(Usuario), request.Email!);
+            throw new NotFoundException(nameof(User), request.Email!);
         }
 
         if (!user.IsActive)
@@ -49,20 +49,19 @@ public class LoginUserCommandHandler : IRequestHandler<LoginUserCommand, AuthRes
             throw new Exception("Las credenciales del usuario son erroneas");
         }
 
-        var direccionEnvio = await _unitOfWork.Repository<Address>().GetEntityAsync(x => x.UserName == user.UserName);
+        //var direccionEnvio = await _unitOfWork.Repository<Address>().GetEntityAsync(x => x.UserName == user.UserName);
 
         var roles = await _userManager.GetRolesAsync(user);
 
         var authResponse = new AuthResponse
         {
             Id = user.Id,
-            Nombre = user.Nombre,
-            Apellido = user.Apellido,
-            Telefono = user.Telefono,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Phone = user.Phone,
             Email = user.Email,
             UserName = user.UserName,
-            Avatar = user.AvatarUrl,
-            DireccionEnvio = _mapper.Map<AddressVm>(direccionEnvio),
+            Avatar = user.AvatarUrl,            
             Token = _authService.CreateToken(user, roles),
             Roles = roles
         };

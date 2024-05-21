@@ -11,7 +11,7 @@ public class TrebolDbContextData
 {
     public static async Task LoadDataAsync(
         TrebolDbContext context,
-        UserManager<Usuario> usuarioManager,
+        UserManager<User> usuarioManager,
         RoleManager<IdentityRole> roleManager,
         ILoggerFactory loggerFactory
     )
@@ -26,30 +26,29 @@ public class TrebolDbContextData
 
             if (!usuarioManager.Users.Any())
             {
-                var usuarioAdmin = new Usuario
+                var usuarioAdmin = new User
                 {
-                    Nombre = "Sixto José",
-                    Apellido = "Romero Martínez",
+                    FirstName = "Sixto José",
+                    LastName = "Romero Martínez",
                     Email = "sixto.jose@gmail.com",
                     UserName = "sixto.romero",
-                    Telefono = "51x70",
+                    Phone = "3022415223",
                     AvatarUrl = "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/vaxidrez.jpg?alt=media&token=14a28860-d149-461e-9c25-9774d7ac1b24",
                 };
                 await usuarioManager.CreateAsync(usuarioAdmin, "PasswordSixtoRomero123$");
                 await usuarioManager.AddToRoleAsync(usuarioAdmin, Role.ADMIN);
 
-                var usuario = new Usuario
+                var usuario = new User
                 {
-                    Nombre = "Juan",
-                    Apellido = "Perez",
-                    Email = "juan.perez@gmail.com",
-                    UserName = "juan.perez",
-                    Telefono = "98563434534",
+                    FirstName = "Deni Luz",
+                    LastName = "Pastrana Hoyos",
+                    Email = "deni.luz@gmail.com",
+                    UserName = "deni.pastrana",
+                    Phone = "3114585233",
                     AvatarUrl = "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/avatar-1.webp?alt=media&token=58da3007-ff21-494d-a85c-25ffa758ff6d",
                 };
-                await usuarioManager.CreateAsync(usuario, "PasswordJuanPerez123$");
+                await usuarioManager.CreateAsync(usuario, "PasswordDeniLuz123$");
                 await usuarioManager.AddToRoleAsync(usuario, Role.USER);
-
             }
 
             if (!context.Categories!.Any())

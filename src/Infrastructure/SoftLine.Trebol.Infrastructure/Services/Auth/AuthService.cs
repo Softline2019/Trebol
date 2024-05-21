@@ -21,7 +21,7 @@ namespace SoftLine.Trebol.Infrastructure.Services.Auth
             _jwtSettings = jwtSettings.Value;
         }
 
-        public string CreateToken(Usuario usuario, IList<string>? roles)
+        public string CreateToken(User usuario, IList<string>? roles)
         {
             var claims = new List<Claim>
         {

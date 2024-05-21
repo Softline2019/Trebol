@@ -7,7 +7,7 @@ using System.Diagnostics.Metrics;
 
 namespace SoftLine.Trebol.Infrastructure.Persistence;
 
-public class TrebolDbContext : IdentityDbContext<Usuario>
+public class TrebolDbContext : IdentityDbContext<User>
 {
     public TrebolDbContext(DbContextOptions<TrebolDbContext> options) : base(options)
     { }
@@ -61,8 +61,8 @@ public class TrebolDbContext : IdentityDbContext<Usuario>
             .IsRequired()
             .OnDelete(DeleteBehavior.Cascade);        
 
-        builder.Entity<Usuario>().Property(x => x.Id).HasMaxLength(36); //250
-        builder.Entity<Usuario>().Property(x => x.NormalizedUserName).HasMaxLength(90);
+        builder.Entity<User>().Property(x => x.Id).HasMaxLength(36); //250
+        builder.Entity<User>().Property(x => x.NormalizedUserName).HasMaxLength(90);
         builder.Entity<IdentityRole>().Property(x => x.Id).HasMaxLength(36);
         builder.Entity<IdentityRole>().Property(x => x.NormalizedName).HasMaxLength(90);
     }
