@@ -73,4 +73,8 @@ public class TrebolDbContext : IdentityDbContext<User>
     public DbSet<Review>? Reviews { get; set; }
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Address>? Addresses { get; set; }
+    public DbSet<Receipt>? Receipts { get; set; }
+    
+
+
 }

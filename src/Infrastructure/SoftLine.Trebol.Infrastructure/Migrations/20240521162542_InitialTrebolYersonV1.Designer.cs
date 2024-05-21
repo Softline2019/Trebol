@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoftLine.Trebol.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SoftLine.Trebol.Infrastructure.Persistence;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     [DbContext(typeof(TrebolDbContext))]
-    partial class TrebolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240521162542_InitialTrebolYersonV1")]
+    partial class InitialTrebolYersonV1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -346,58 +349,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("SoftLine.Trebol.Domain.Receipt", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FNCShort")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCompany")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("NR")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("ReceiptClosing")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("fcDocRef")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fcName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("fnConsec")
-                        .HasColumnType("int");
-
-                    b.Property<int>("fnReceipt")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Receipts");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.Review", b =>
