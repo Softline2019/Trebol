@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using CloudinaryDotNet.Core;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using SoftLine.Trebol.Application.Contracts.Identity;
 using SoftLine.Trebol.Application.Exceptions;
@@ -9,12 +10,12 @@ namespace SoftLine.Trebol.Application.Features.Auths.Users.Commands.RegisterUser
 
 public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, AuthResponse>
 {
-    private readonly UserManager<Usuario> _userManager;
+    private readonly UserManager<User> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly IAuthService _authService;
 
     public RegisterUserCommandHandler(
-                UserManager<Usuario> userManager,
+                UserManager<User> userManager,
                 RoleManager<IdentityRole> roleManager,
                 IAuthService authService)
     {
@@ -37,14 +38,14 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, A
             throw new BadRequestException("El Username del usuario ya existe en la base de datos.");
         }
 
-        var usuario = new Usuario
+        var usuario = new User
         {
-            Nombre = request.Nombre,
-            Apellido = request.Apellido,
-            Telefono = request.Telefono,
+            FirstName = request.FirstName,
+            LastName = request.LastName,
+            Phone = request.Phone,
             Email = request.Email,
             UserName = request.UserName,
-            AvatarUrl = request.FotoUrl
+            AvatarUrl = request.PhotoUrl
         };
 
         var resultado = await _userManager.CreateAsync(usuario!, request.Password!);
@@ -56,9 +57,9 @@ public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, A
             return new AuthResponse
             {
                 Id = usuario.Id,
-                Nombre = usuario.Nombre,
-                Apellido = usuario.Apellido,
-                Telefono = usuario.Telefono,
+                FirstName = usuario.FirstName,
+                LastName = usuario.LastName,
+                Phone = usuario.Phone,
                 Email = usuario.Email,
                 UserName = usuario.UserName,
                 Avatar = usuario.AvatarUrl,

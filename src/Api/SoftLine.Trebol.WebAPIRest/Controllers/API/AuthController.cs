@@ -13,12 +13,12 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private IMediator _mediator;
         private IManageImageService _manageImageService;
 
-        public UsuarioController(IMediator mediator, IManageImageService manageImageService)
+        public AuthController(IMediator mediator, IManageImageService manageImageService)
         {
             _mediator = mediator;
             _manageImageService = manageImageService;
@@ -37,16 +37,16 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<AuthResponse>> Register2([FromBody] RegisterUserCommand request)
         {
-            if (request.Foto is not null)
+            if (request.Photo is not null)
             {
                 var resultImage = await _manageImageService.UploadImage(new ImageData
                 {
-                    ImageStream = request.Foto!.OpenReadStream(),
-                    Nombre = request.Nombre
+                    ImageStream = request.Photo!.OpenReadStream(),
+                    Name = request.FirstName
                 });
 
-                request.FotoId = resultImage.PublicId;
-                request.FotoUrl = resultImage.Url;
+                request.PhotoId = resultImage.PublicId;
+                request.PhotoUrl = resultImage.Url;
             }
 
             return await _mediator.Send(request);
@@ -57,17 +57,17 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<ActionResult<AuthResponse>> Register([FromForm] RegisterUserCommand request)
         {
-            if (request.Foto is not null)
+            if (request.Photo is not null)
             {
                 var resultImage = await _manageImageService.UploadImage(new ImageData
-                {
-                    ImageStream = request.Foto!.OpenReadStream(),
-                    Nombre = request.Foto.Name
-                }
+                    {
+                        ImageStream = request.Photo!.OpenReadStream(),
+                        Name = request.Photo.Name
+                    }
                 );
 
-                request.FotoId = resultImage.PublicId;
-                request.FotoUrl = resultImage.Url;
+                request.PhotoId = resultImage.PublicId;
+                request.PhotoUrl = resultImage.Url;
             }
 
             return await _mediator.Send(request);

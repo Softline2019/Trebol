@@ -39,14 +39,14 @@ builder.Services.AddControllers(opt =>
 }).AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-IdentityBuilder identityBuilder = builder.Services.AddIdentityCore<Usuario>();
+IdentityBuilder identityBuilder = builder.Services.AddIdentityCore<User>();
 identityBuilder = new IdentityBuilder(identityBuilder.UserType, identityBuilder.Services);
 
 identityBuilder.AddRoles<IdentityRole>().AddDefaultTokenProviders();
-identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<Usuario, IdentityRole>>();
+identityBuilder.AddClaimsPrincipalFactory<UserClaimsPrincipalFactory<User, IdentityRole>>();
 
 identityBuilder.AddEntityFrameworkStores<TrebolDbContext>();
-identityBuilder.AddSignInManager<SignInManager<Usuario>>();
+identityBuilder.AddSignInManager<SignInManager<User>>();
 
 builder.Services.TryAddSingleton<ISystemClock, SystemClock>();
 
@@ -100,7 +100,7 @@ using (var scope = app.Services.CreateScope())
     try
     {
         var context = service.GetRequiredService<TrebolDbContext>();
-        var usuarioManager = service.GetRequiredService<UserManager<Usuario>>();
+        var usuarioManager = service.GetRequiredService<UserManager<User>>();
         var roleManager = service.GetRequiredService<RoleManager<IdentityRole>>();
         await context.Database.MigrateAsync();
         await TrebolDbContextData.LoadDataAsync(context, usuarioManager, roleManager, loggerFactory);

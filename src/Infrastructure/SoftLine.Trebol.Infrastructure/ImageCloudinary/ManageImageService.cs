@@ -23,7 +23,7 @@ public class ManageImageService : IManageImageService
 
         var uploadImage = new ImageUploadParams()
         {
-            File = new FileDescription(imageStream.Nombre, imageStream.ImageStream)
+            File = new FileDescription(imageStream.Name, imageStream.ImageStream)
         };
 
         var uploadResult = await cloudinary.UploadAsync(uploadImage);
