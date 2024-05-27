@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SoftLine.Trebol.Application.Features.Third.Commands.CreateThird;
 using SoftLine.Trebol.Domain;
 using SoftLine.Trebol.Domain.Common;
 using System.Diagnostics.Metrics;
@@ -74,7 +75,8 @@ public class TrebolDbContext : IdentityDbContext<User>
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Address>? Addresses { get; set; }
     public DbSet<Receipt>? Receipts { get; set; }
-    
+    public DbSet<ThirdParty>? ThirdParties { get; set; }
+
 
 
 }

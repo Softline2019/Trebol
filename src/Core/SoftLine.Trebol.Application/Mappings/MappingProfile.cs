@@ -5,6 +5,7 @@ using SoftLine.Trebol.Application.Features.Products.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Receipts.Commands.CreateReceipts;
 using SoftLine.Trebol.Application.Features.Receipts.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Reviews.Queries.Vms;
+using SoftLine.Trebol.Application.Features.Third.Queries.Vms;
 using SoftLine.Trebol.Domain;
 
 namespace SoftLine.Trebol.Application.Mappings;
@@ -22,6 +23,7 @@ public class MappingProfile : Profile
         CreateMap<Address, AddressVm>();
         CreateMap<Receipt, ReceiptsVm>();
         CreateMap<CreateReceiptsCommand, Receipt>();
+        CreateMap<ThirdParty, ThirdPartyVm>();
 
 
 
