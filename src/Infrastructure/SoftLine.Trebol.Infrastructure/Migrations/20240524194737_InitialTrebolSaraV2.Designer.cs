@@ -12,7 +12,7 @@ using SoftLine.Trebol.Infrastructure.Persistence;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     [DbContext(typeof(TrebolDbContext))]
-    [Migration("20240522194658_InitialTrebolSaraV2")]
+    [Migration("20240524194737_InitialTrebolSaraV2")]
     partial class InitialTrebolSaraV2
     {
         /// <inheritdoc />
@@ -349,6 +349,53 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Puc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CodTributario")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Cuenta")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Digitable")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreCorto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Pucs");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.Receipt", b =>

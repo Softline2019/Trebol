@@ -1,6 +1,7 @@
 ﻿
 using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using SoftLine.Trebol.Application.Features.Pucs.Queries.Vms;
 using SoftLine.Trebol.Application.Persistence;
 using SoftLine.Trebol.Domain;
@@ -11,18 +12,28 @@ public class CreatePucsCommandHandler : IRequestHandler<CreatePucsCommand, PucsV
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ILogger<CreatePucsCommandHandler> _logger;
 
-    public CreatePucsCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public CreatePucsCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<CreatePucsCommandHandler> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _logger = logger;
     }
 
     async Task<PucsVm> IRequestHandler<CreatePucsCommand, PucsVm>.Handle(CreatePucsCommand request, CancellationToken cancellationToken)
     {
-        var receipstEntity = _mapper.Map<Puc>(request);
-        await _unitOfWork.Repository<Puc>().AddAsync(receipstEntity);
+        try
+        {
+            var receipstEntity = _mapper.Map<Puc>(request);
+            await _unitOfWork.Repository<Puc>().AddAsync(receipstEntity);
 
-        return _mapper.Map<PucsVm>(receipstEntity);
+            return _mapper.Map<PucsVm>(receipstEntity);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "An error occurred while creating a PUC");
+            throw; 
+        }
     }
 }

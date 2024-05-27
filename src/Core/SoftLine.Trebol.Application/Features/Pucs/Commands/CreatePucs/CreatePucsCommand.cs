@@ -7,12 +7,12 @@ namespace SoftLine.Trebol.Application.Features.Pucs.Commands.CreatePucs;
 
 public class CreatePucsCommand: IRequest<PucsVm>
 {
-    public int IdCompany { get; set; }
-    public string FNCShort { get; set; }
-    public int FCAccount { get; set; }
-    public string FCName { get; set; }
-    public string FCType { get; set; }
-    public int FCCodSub { get; set; }
-    public string FCDigit { get; set; }
+   
+    public string NombreCorto { get; set; }
+    public int Cuenta { get; set; }
+    public string Nombre { get; set; }
+    public string Tipo { get; set; }
+    public int CodTributario { get; set; }
+    public string Digitable { get; set; }
 
 }
