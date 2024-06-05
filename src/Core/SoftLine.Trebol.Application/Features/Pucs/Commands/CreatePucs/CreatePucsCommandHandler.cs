@@ -32,7 +32,7 @@ public class CreatePucsCommandHandler : IRequestHandler<CreatePucsCommand, PucsV
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An error occurred while creating a PUC");
+            _logger.LogError(ex, " error crearHandler PUC");
             throw; 
         }
     }

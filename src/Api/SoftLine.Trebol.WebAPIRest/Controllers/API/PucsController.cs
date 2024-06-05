@@ -6,6 +6,9 @@ using SoftLine.Trebol.Application.Features.Pucs.Queries.GetAllPucs;
 using SoftLine.Trebol.Application.Features.Pucs.Queries.Vms;
 using System.Net;
 using Microsoft.Extensions.Logging;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.DeletePucs;
+using SendGrid.Helpers.Errors.Model;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.UpdatePucs;
 
 namespace SoftLine.Trebol.WebAPIRest.Controllers.API;
 
@@ -36,8 +39,8 @@ public class PucsController : ControllerBase
 
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Error creating PUC. Details: {Message}, StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
-            return StatusCode(500, "Internal server error while creating PUC");
+            _logger.LogError(ex, "Error crear PUC. Details: {Message}, StackTrace: {StackTrace}", ex.Message, ex.StackTrace);
+            return StatusCode(500, "Internal server error con crear PUC");
         }
     }
 
@@ -49,7 +52,38 @@ public class PucsController : ControllerBase
     {
         var query = new GetAllPucsQuery();
         var result = await _mediator.Send(query);
-        return Ok(result);
+       return Ok(result);
     }
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeletePuc(int id)
+    {
+        var command = new DeletePucsCommand { Id = id };
+        try
+        {
+            await _mediator.Send(command);
+            return NoContent(); // HTTP 204
+        }
+        catch (NotFoundException)
+        {
+            return NotFound(); // HTTP 404
+        }
+    }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdatePuc(int id, [FromBody] UpdatePucsCommand command)
+    {
+        if (id != command.Id)
+        {
+            return BadRequest("ID in URL does not match ID in request body.");
+        }
 
+        try
+        {
+            await _mediator.Send(command);
+            return NoContent(); // HTTP 204
+        }
+        catch (NotFoundException)
+        {
+            return NotFound(); // HTTP 404
+        }
+    }
 }
