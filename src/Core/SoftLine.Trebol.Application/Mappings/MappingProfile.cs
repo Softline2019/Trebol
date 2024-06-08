@@ -2,6 +2,11 @@
 using SoftLine.Trebol.Application.Features.Addresses.Vms;
 using SoftLine.Trebol.Application.Features.Images.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Products.Queries.Vms;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.CreatePucs;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.DeletePucs;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.UpdatePucs;
+using SoftLine.Trebol.Application.Features.Pucs.Queries.GetAllPucs;
+using SoftLine.Trebol.Application.Features.Pucs.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Receipts.Commands.CreateReceipts;
 using SoftLine.Trebol.Application.Features.Receipts.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Reviews.Queries.Vms;
@@ -22,6 +27,11 @@ public class MappingProfile : Profile
         CreateMap<Address, AddressVm>();
         CreateMap<Receipt, ReceiptsVm>();
         CreateMap<CreateReceiptsCommand, Receipt>();
+        CreateMap<CreatePucsCommand, Puc>();
+        CreateMap<GetAllPucsQuery, Puc>();
+        CreateMap<DeletePucsCommand, Puc>();
+        CreateMap<UpdatePucsCommand, Puc>();
+        CreateMap<Puc, PucsVm>();
 
 
 

@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\SoftLine.Trebol.Application\SoftLine.Trebol.Application.csproj" />
+    <ProjectReference Include="..\..\Core\SoftLine.Trebol.Domain\SoftLine.Trebol.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SoftLine.Trebol.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SoftLine.Trebol.Infrastructure.Persistence;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     [DbContext(typeof(TrebolDbContext))]
-    partial class TrebolDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240524194737_InitialTrebolSaraV2")]
+    partial class InitialTrebolSaraV2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -370,7 +373,7 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
 
                     b.Property<string>("Digitable")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");

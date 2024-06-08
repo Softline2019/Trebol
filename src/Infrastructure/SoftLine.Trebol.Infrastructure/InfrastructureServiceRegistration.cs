@@ -28,6 +28,9 @@ public static class InfrastructureServiceRegistration
         services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
         services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
 
+        
+
+
         return services;
     }
 

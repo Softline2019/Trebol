@@ -74,7 +74,8 @@ public class TrebolDbContext : IdentityDbContext<User>
     public DbSet<Country>? Countries { get; set; }
     public DbSet<Address>? Addresses { get; set; }
     public DbSet<Receipt>? Receipts { get; set; }
-    
+    public DbSet<Puc>? Pucs { get; set; }
+
 
 
 }
