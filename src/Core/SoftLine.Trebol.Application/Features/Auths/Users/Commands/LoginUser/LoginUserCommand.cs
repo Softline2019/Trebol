@@ -7,5 +7,6 @@ public class LoginUserCommand : IRequest<AuthResponse>
 {
     public string? Email { get; set; }
     public string? Password { get; set; }
+    public int IdCompany { get; set; }
 
 }

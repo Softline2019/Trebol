@@ -126,3 +126,4 @@ client_secrets.json
 # Exclude .gitignore and .tfignore files
 .gitignore
 .tfignore
+/src/Infrastructure/SoftLine.Trebol.Infrastructure/Migrations/20240523183618_InitialTrebolEstebanV1.cs
