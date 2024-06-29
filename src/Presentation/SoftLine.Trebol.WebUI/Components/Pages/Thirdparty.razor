@@ -1,0 +1,194 @@
+﻿@page "/thirdparty"
+
+<h3>Third Party</h3>
+
+<EditForm Model="model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Company Short Name:</label>
+        <InputText @bind-Value="model.CompanyShortName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">User:</label>
+        <InputText @bind-Value="model.User" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Class:</label>
+        <InputText @bind-Value="model.ClassString" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Regime:</label>
+        <InputText @bind-Value="model.RegimeString" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">NIT:</label>
+        <InputNumber @bind-Value="model.NIT" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">NIT Code:</label>
+        <InputText @bind-Value="model.NITCode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Business Name:</label>
+        <InputText @bind-Value="model.BusinessName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Address:</label>
+        <InputText @bind-Value="model.Address" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">City:</label>
+        <InputText @bind-Value="model.City" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone 1:</label>
+        <InputNumber @bind-Value="model.Phone1" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Phone 2:</label>
+        <InputNumber @bind-Value="model.Phone2" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Mobile:</label>
+        <InputText @bind-Value="model.Mobile" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fax:</label>
+        <InputNumber @bind-Value="model.Fax" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <InputText @bind-Value="model.Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">First Name:</label>
+        <InputText @bind-Value="model.FirstName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Middle Name:</label>
+        <InputText @bind-Value="model.MiddleName" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name 1:</label>
+        <InputText @bind-Value="model.LastName1" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Last Name 2:</label>
+        <InputText @bind-Value="model.LastName2" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Country Code:</label>
+        <InputText @bind-Value="model.CountryCode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Department Code:</label>
+        <InputText @bind-Value="model.DepartmentCode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Economic Activity Code:</label>
+        <InputText @bind-Value="model.EconomicActivityCode" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Has Document:</label>
+        <InputCheckbox @bind-Value="model.HasDocumentBool" class="form-check-input" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Is Mandator:</label>
+        <InputCheckbox @bind-Value="model.IsMandatorBool" class="form-check-input" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Admission Date:</label>
+        <InputDate @bind-Value="model.AdmissionDate" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">User Update:</label>
+        <InputText @bind-Value="model.UserUpdate" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Update Date:</label>
+        <InputDate @bind-Value="model.UpdateDate" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tax Mailbox:</label>
+        <InputText @bind-Value="model.TaxMailbox" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Is Supplier:</label>
+        <InputCheckbox @bind-Value="model.IsSupplier" class="form-check-input" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Is Client:</label>
+        <InputCheckbox @bind-Value="model.IsClient" class="form-check-input" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Is Employee:</label>
+        <InputCheckbox @bind-Value="model.IsEmployee" class="form-check-input" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Is Beneficiary:</label>
+        <InputCheckbox @bind-Value="model.IsBeneficiary" class="form-check-input" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Third Party</button>
+</EditForm>
+
+@code {
+    private CreateThirdPartyCommand model = new CreateThirdPartyCommand();
+
+    private void HandleValidSubmit()
+    {
+        // Manejar el envío del formulario aquí
+        Console.WriteLine("Formulario enviado correctamente!");
+    }
+
+    // Definición de la entidad CreateThirdPartyCommand para pruebas
+    public class CreateThirdPartyCommand
+    {
+        public string? CompanyShortName { get; set; }
+        public string? User { get; set; }
+        public string? ClassString { get; set; }  // Usar string temporalmente
+        public string? RegimeString { get; set; }  // Usar string temporalmente
+        public decimal NIT { get; set; }
+        public decimal VerificationDigitNIT { get; set; }
+        public string? NITCode { get; set; }
+        public string? BusinessName { get; set; }
+        public string? Address { get; set; }
+        public string? City { get; set; }
+        public decimal? Phone1 { get; set; }
+        public decimal? Phone2 { get; set; }
+        public string? Mobile { get; set; }
+        public decimal? Fax { get; set; }
+        public string? Email { get; set; }
+        public string? FirstName { get; set; }
+        public string? MiddleName { get; set; }
+        public string? LastName1 { get; set; }
+        public string? LastName2 { get; set; }
+        public string? CountryCode { get; set; }
+        public string? DepartmentCode { get; set; }
+        public string? EconomicActivityCode { get; set; }
+        public bool? HasDocument { get; set; }
+        public bool? IsMandator { get; set; }
+        public DateTime? AdmissionDate { get; set; }
+        public string? UserUpdate { get; set; }
+        public DateTime? UpdateDate { get; set; }
+        public string? TaxMailbox { get; set; }
+        public bool IsSupplier { get; set; }
+        public bool IsClient { get; set; }
+        public bool IsEmployee { get; set; }
+        public bool IsBeneficiary { get; set; }
+
+        public bool HasDocumentBool
+        {
+            get => HasDocument ?? false;
+            set => HasDocument = value;
+        }
+
+        public bool IsMandatorBool
+        {
+            get => IsMandator ?? false;
+            set => IsMandator = value;
+        }
+    }
+}

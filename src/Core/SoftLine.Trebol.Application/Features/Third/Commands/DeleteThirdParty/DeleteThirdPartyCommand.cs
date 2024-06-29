@@ -1,6 +1,10 @@
-﻿namespace SoftLine.Trebol.Application.Features.Third.Commands.DeleteThirdParty
+﻿using MediatR;
+
+namespace SoftLine.Trebol.Application.Features.Third.Commands.DeleteThirdParty
 {
-    internal class DeleteThirdPartyCommand
+    public class DeleteThirdPartyCommand : IRequest
     {
+        public int Id { get; set; }
     }
 }
+

@@ -1,7 +1,10 @@
-﻿namespace SoftLine.Trebol.Application.Features.Third.Queries.Vms
+﻿using MediatR;
+
+namespace SoftLine.Trebol.Application.Features.Third.Commands.UpdateThirdParty
 {
-    public class ThirdPartyVm
+    public class UpdateThirdPartyCommand : IRequest
     {
+        public int Id { get; set; }
         public decimal NIT { get; set; }
         public string? Class { get; set; }
         public string? Regime { get; set; }

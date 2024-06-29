@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class initialTrebolEstebanV2 : Migration
+    public partial class _InitialEstebanV1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -124,6 +124,8 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     Level4 = table.Column<int>(type: "int", nullable: false),
                     Level5 = table.Column<int>(type: "int", nullable: false),
                     Level6 = table.Column<int>(type: "int", nullable: false),
+                    Level7 = table.Column<int>(type: "int", nullable: false),
+                    Level8 = table.Column<int>(type: "int", nullable: false),
                     CostCenter = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     CostCenterLevel1 = table.Column<int>(type: "int", nullable: false),
                     CostCenterLevel2 = table.Column<int>(type: "int", nullable: false),
@@ -231,18 +233,20 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CompanyShortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    User = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Class = table.Column<string>(type: "nvarchar(1)", nullable: true),
+                    Regime = table.Column<string>(type: "nvarchar(1)", nullable: true),
                     NIT = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Class = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Regime = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    VerificationDigitNIT = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    VerificationDigitNIT = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     NITCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BusinessName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Phone2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone1 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Phone2 = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Fax = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fax = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -251,18 +255,16 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     CountryCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DepartmentCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EconomicActivityCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    HasDocument = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsMandator = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HasDocument = table.Column<bool>(type: "bit", nullable: true),
+                    IsMandator = table.Column<bool>(type: "bit", nullable: true),
                     AdmissionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     UserUpdate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     TaxMailbox = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsSupplier = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsClient = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsEmployee = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IsBeneficiary = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CompanyShortName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    User = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsSupplier = table.Column<bool>(type: "bit", nullable: false),
+                    IsClient = table.Column<bool>(type: "bit", nullable: false),
+                    IsEmployee = table.Column<bool>(type: "bit", nullable: false),
+                    IsBeneficiary = table.Column<bool>(type: "bit", nullable: false),
                     IdCompany = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -1,10 +1,14 @@
 using SoftLine.Trebol.WebUI.Components;
+using System.Net.Http;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Register HttpClient
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.Configuration["ApiBaseAddress"] ?? "https://localhost:5001/") });
 
 var app = builder.Build();
 

@@ -363,6 +363,12 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<int>("Level6")
                         .HasColumnType("int");
 
+                    b.Property<int>("Level7")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level8")
+                        .HasColumnType("int");
+
                     b.Property<bool?>("LocalMoney")
                         .HasColumnType("bit");
 
@@ -757,7 +763,7 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Class")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("CompanyShortName")
                         .HasColumnType("nvarchar(max)");
@@ -780,32 +786,32 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Fax")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Fax")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HasDocument")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("HasDocument")
+                        .HasColumnType("bit");
 
                     b.Property<int>("IdCompany")
                         .HasColumnType("int");
 
-                    b.Property<string>("IsBeneficiary")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsBeneficiary")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsClient")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsClient")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsEmployee")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsEmployee")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsMandator")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("IsMandator")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsSupplier")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsSupplier")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -831,14 +837,14 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("NITCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Phone1")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Phone2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Phone2")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Regime")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("TaxMailbox")
                         .HasColumnType("nvarchar(max)");
@@ -852,7 +858,7 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("UserUpdate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("VerificationDigitNIT")
+                    b.Property<decimal>("VerificationDigitNIT")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

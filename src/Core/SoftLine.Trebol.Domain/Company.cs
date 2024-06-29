@@ -27,6 +27,7 @@ public class Company
     [StringLength(10)]
     public string? Indicative { get; set; }
 
+
     [StringLength(10)]
     public string? DepartmentCode { get; set; }
 
@@ -55,6 +56,8 @@ public class Company
     public int Level4 { get; set; }
     public int Level5 { get; set; }
     public int Level6 { get; set; }
+    public int Level7 { get; set; }
+    public int Level8 { get; set; }//MAXIMO  16 CARACTERES
 
     [StringLength(50)]
     public string? CostCenter { get; set; }
