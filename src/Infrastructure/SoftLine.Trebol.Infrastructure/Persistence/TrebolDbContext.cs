@@ -78,7 +78,6 @@ public class TrebolDbContext : IdentityDbContext<User>
     public DbSet<Receipt>? Receipts { get; set; }
     public DbSet<ThirdParty>? ThirdParties { get; set; }
     public DbSet<Company>? Companies { get; set; }
-    public DbSet<Tipo>? Tipos { get; set; }
     public DbSet<Puc>? Pucs { get; set; }
     public DbSet<Consecutive>? Consecutives { get; set; }
 

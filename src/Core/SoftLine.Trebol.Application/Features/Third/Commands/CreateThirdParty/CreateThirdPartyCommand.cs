@@ -9,8 +9,8 @@ public class CreateThirdPartyCommand : IRequest<ThirdPartyVm>
     public string? User { get; set; }
     public char? Class { get; set; }
     public char? Regime { get; set; }
-    public decimal NIT { get; set; }
-    public decimal VerificationDigitNIT { get; set; }
+    public int NIT { get; set; }
+    public int VerificationDigitNIT { get; set; }
     public string? NITCode { get; set; }
     public string? BusinessName { get; set; }
     public string? Address { get; set; }

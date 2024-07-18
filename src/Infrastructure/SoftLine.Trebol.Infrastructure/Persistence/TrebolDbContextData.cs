@@ -22,6 +22,19 @@ public class TrebolDbContextData
             {
                 await roleManager.CreateAsync(new IdentityRole(Role.ADMIN));
                 await roleManager.CreateAsync(new IdentityRole(Role.USER));
+
+                //----------------------------------------------------------------
+
+                await roleManager.CreateAsync(new IdentityRole(Role.ADMINISTRADOR));
+                await roleManager.CreateAsync(new IdentityRole(Role.DIJITADORES));
+                await roleManager.CreateAsync(new IdentityRole(Role.AUXILIARES));
+                await roleManager.CreateAsync(new IdentityRole(Role.AUDITORIA));
+                await roleManager.CreateAsync(new IdentityRole(Role.GERENTE));
+                await roleManager.CreateAsync(new IdentityRole(Role.REVISORIAFISCAL));
+                await roleManager.CreateAsync(new IdentityRole(Role.AUXILIARCONTABLE));
+                await roleManager.CreateAsync(new IdentityRole(Role.CONTADOR));
+
+                //----------------------------------------------------------------
             }
 
             if (!usuarioManager.Users.Any())
@@ -36,7 +49,7 @@ public class TrebolDbContextData
                     AvatarUrl = "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/vaxidrez.jpg?alt=media&token=14a28860-d149-461e-9c25-9774d7ac1b24",
                 };
                 await usuarioManager.CreateAsync(usuarioAdmin, "PasswordSixtoRomero123$");
-                await usuarioManager.AddToRoleAsync(usuarioAdmin, Role.ADMIN);
+                await usuarioManager.AddToRoleAsync(usuarioAdmin, Role.AUXILIARCONTABLE);
 
                 var usuario = new User
                 {
@@ -48,8 +61,11 @@ public class TrebolDbContextData
                     AvatarUrl = "https://firebasestorage.googleapis.com/v0/b/edificacion-app.appspot.com/o/avatar-1.webp?alt=media&token=58da3007-ff21-494d-a85c-25ffa758ff6d",
                 };
                 await usuarioManager.CreateAsync(usuario, "PasswordDeniLuz123$");
-                await usuarioManager.AddToRoleAsync(usuario, Role.USER);
+                await usuarioManager.AddToRoleAsync(usuario, Role.CONTADOR);
+
+
             }
+
 
             if (!context.Categories!.Any())
             {

@@ -1,18 +1,63 @@
 ﻿@page "/"
 @rendermode InteractiveServer
+@layout LoginLayout
+
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
 
 @using System.Net.Http
 @using System.Net.Http.Json
+@using SoftLine.Trebol.WebUI
 @using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Authorization
 @using Microsoft.AspNetCore.Components.Forms
 @using SoftLine.Trebol.Application.Features.Auths.Users.Commands.LoginUser
 @using Microsoft.JSInterop
+@using SoftLine.Trebol.Application.Features.Auths.Users.Vms
+@using SoftLine.Trebol.WebUI.Components.Layout
 @inject HttpClient Http
 @inject IJSRuntime JS
+@inject AuthenticationStateProvider autenticacionProvider
+@inject NavigationManager navManager
 
 <PageTitle>Login</PageTitle>
 
+<div class="row mt-5">
 
+    <div class="col-lg-4 offset-lg-4 border">
+
+        <div class="mb-3 text-center">
+            <h3>LOGIN</h3>
+        </div>
+
+        <div class="mb-3">
+            <label>Correo</label>
+            <input @bind="@loginModel.Email" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label>Contraseña</label>
+            <input @bind="@loginModel.Password" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary" @onclick="HandleLogin">Login</button>
+
+            @if (!string.IsNullOrEmpty(successMessage))
+            {
+                <div class="alert alert-success">@successMessage</div>
+            }
+
+            @if (!string.IsNullOrEmpty(errorMessage))
+            {
+                <div class="alert alert-danger">@errorMessage</div>
+            }
+        </div>
+    </div>
+
+</div>
+
+@* 
 <div class="mb-2">
     <label for="email" class="form-label">Email</label>
     <InputText id="Email" class="form-control" @bind-Value="@loginModel.Email"></InputText>
@@ -26,19 +71,7 @@
 <div class="mb-3">
     <label for="idCompany" class="form-label">Company ID</label>
     <InputNumber id="idCompany" class="form-control" @bind-Value="@loginModel.IdCompany" />
-</div>
-
-<button class="btn btn-primary" @onclick="HandleLogin">Login</button>
-
-@if (!string.IsNullOrEmpty(successMessage))
-{
-    <div class="alert alert-success">@successMessage</div>
-}
-
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger">@errorMessage</div>
-}
+</div> *@
 
 @code {
     private LoginUserCommand loginModel = new LoginUserCommand();
@@ -48,7 +81,7 @@
     private async Task HandleLogin()
     {
         var api = "https://localhost:7051";
-
+        // https://localhost:7051/api/Auth/login
         errorMessage = null;
         successMessage = null;
 
@@ -57,9 +90,12 @@
             var response = await Http.PostAsJsonAsync($"{api}/api/Auth/login", loginModel);
             if (response.IsSuccessStatusCode)
             {
-                var authResponse = await response.Content.ReadFromJsonAsync<AuthResponse>();
-                await JS.InvokeVoidAsync("localStorage.setItem", "authToken", authResponse.Token);
-                successMessage = "Se logueó correctamente";
+                var sesionUsuario = await response.Content.ReadFromJsonAsync<Session>();                
+                await JS.InvokeVoidAsync("localStorage.setItem", "authtoken", sesionUsuario.token);
+                Navigation.NavigateTo("/home");
+
+                //Llevar al home o dashboard
+                
             }
             else
             {
@@ -77,5 +113,9 @@
     private class AuthResponse
     {
         public string? Token { get; set; }
+
+
     }
+
+    //guardar en el local storage 
 }

@@ -6,6 +6,7 @@ using SoftLine.Trebol.Application.Features.Pucs.Commands.DeletePuc;
 using SoftLine.Trebol.Application.Features.Pucs.Commands.CreatePucs;
 using SoftLine.Trebol.Application.Features.Pucs.Queries.Vms;
 using System.Threading.Tasks;
+using SoftLine.Trebol.Application.Features.Pucs.Queries.GetPucs;
 
 namespace SoftLine.Trebol.WebAPIRest.Controllers.API
 {
@@ -21,7 +22,7 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreatePucsCommand command)
+        public async Task<IActionResult> Create([FromForm]CreatePucsCommand command)
         {
             if (command == null)
             {
@@ -54,6 +55,30 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
         {
             await _mediator.Send(new DeletePucCommand(id));
             return NoContent();
+        }
+
+        [HttpGet("getAll", Name = "GetPucs")]
+        [ProducesResponseType(typeof(List<PucsVm>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<List<PucsVm>>> GetPucs()
+        {
+            var query = new GetPucsQuery();
+            var result = await _mediator.Send(query);
+            return Ok(result);
+        }
+        [HttpGet("{id}", Name = "GetPucById")]
+        [ProducesResponseType(typeof(PucsVm), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<PucsVm>> GetPucById(int id)
+        {
+            var query = new GetPucsQueryById(id);
+            var result = await _mediator.Send(query);
+
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
     }
 }

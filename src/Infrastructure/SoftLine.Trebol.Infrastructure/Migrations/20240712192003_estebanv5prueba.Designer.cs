@@ -12,8 +12,8 @@ using SoftLine.Trebol.Infrastructure.Persistence;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     [DbContext(typeof(TrebolDbContext))]
-    [Migration("20240629051635__InitialEstebanV1")]
-    partial class _InitialEstebanV1
+    [Migration("20240712192003_estebanv5prueba")]
+    partial class estebanv5prueba
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -638,12 +638,10 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("NombreCorto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TipoId")
-                        .HasColumnType("int");
+                    b.Property<string>("Tipo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TipoId");
 
                     b.ToTable("Pucs");
                 });
@@ -834,8 +832,8 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("Mobile")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("NIT")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("NIT")
+                        .HasColumnType("int");
 
                     b.Property<string>("NITCode")
                         .HasColumnType("nvarchar(max)");
@@ -861,46 +859,12 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("UserUpdate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("VerificationDigitNIT")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("VerificationDigitNIT")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.ToTable("ThirdParties");
-                });
-
-            modelBuilder.Entity("SoftLine.Trebol.Domain.Tipo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("DescripcionTipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("IdCompany")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastModifiedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NombreTipo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Tipos");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.User", b =>
@@ -1058,17 +1022,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
-                });
-
-            modelBuilder.Entity("SoftLine.Trebol.Domain.Puc", b =>
-                {
-                    b.HasOne("SoftLine.Trebol.Domain.Tipo", "Tipo")
-                        .WithMany()
-                        .HasForeignKey("TipoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Tipo");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.Review", b =>

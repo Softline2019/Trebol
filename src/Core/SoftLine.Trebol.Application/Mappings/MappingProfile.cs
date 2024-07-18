@@ -7,6 +7,8 @@ using SoftLine.Trebol.Application.Features.Companies.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Images.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Products.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Pucs.Commands.CreatePucs;
+using SoftLine.Trebol.Application.Features.Pucs.Commands.DeletePuc;
+using SoftLine.Trebol.Application.Features.Pucs.Queries.GetPucs;
 using SoftLine.Trebol.Application.Features.Pucs.Queries.Vms;
 using SoftLine.Trebol.Application.Features.Receipts.Commands.CreateReceipts;
 using SoftLine.Trebol.Application.Features.Receipts.Queries.Vms;
@@ -30,8 +32,6 @@ public class MappingProfile : Profile
         CreateMap<Image, ImageVm>();
         CreateMap<Review, ReviewVm>();
         CreateMap<Address, AddressVm>();
-        CreateMap<Receipt, ReceiptsVm>();
-        CreateMap<CreateReceiptsCommand, Receipt>();
 
         //--------------terceros-------------------------------
         CreateMap<ThirdParty, ThirdPartyVm>();
@@ -48,6 +48,13 @@ public class MappingProfile : Profile
         //---------------pucs-----------------------------------
         CreateMap<Puc, PucsVm>();
         CreateMap<CreatePucsCommand, Puc>();
+        CreateMap<DeletePucCommand, Puc>();
+        CreateMap<UpdateCompanyCommand, Puc>();
+        CreateMap<GetPucsQuery, Puc>();
+        CreateMap<GetPucsQueryById, Puc>();
+
+        //---------------Receipt-----------------------------------
+
 
 
 

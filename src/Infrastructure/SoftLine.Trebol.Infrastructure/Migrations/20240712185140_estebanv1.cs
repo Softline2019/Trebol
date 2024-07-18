@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SoftLine.Trebol.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class _InitialEstebanV1 : Migration
+    public partial class estebanv1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -202,6 +202,29 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Pucs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NombreCorto = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Cuenta = table.Column<int>(type: "int", nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CodTributario = table.Column<int>(type: "int", nullable: false),
+                    Digitable = table.Column<bool>(type: "bit", nullable: false),
+                    IdCompany = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pucs", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Receipts",
                 columns: table => new
                 {
@@ -237,8 +260,8 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     User = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Class = table.Column<string>(type: "nvarchar(1)", nullable: true),
                     Regime = table.Column<string>(type: "nvarchar(1)", nullable: true),
-                    NIT = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    VerificationDigitNIT = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NIT = table.Column<int>(type: "int", nullable: false),
+                    VerificationDigitNIT = table.Column<int>(type: "int", nullable: false),
                     NITCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BusinessName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -274,25 +297,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ThirdParties", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tipos",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreTipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DescripcionTipo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdCompany = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tipos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -433,35 +437,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Pucs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreCorto = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Cuenta = table.Column<int>(type: "int", nullable: false),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    TipoId = table.Column<int>(type: "int", nullable: false),
-                    CodTributario = table.Column<int>(type: "int", nullable: false),
-                    Digitable = table.Column<bool>(type: "bit", nullable: false),
-                    IdCompany = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pucs", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Pucs_Tipos_TipoId",
-                        column: x => x.TipoId,
-                        principalTable: "Tipos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Images",
                 columns: table => new
                 {
@@ -564,11 +539,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pucs_TipoId",
-                table: "Pucs",
-                column: "TipoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Reviews_ProductId",
                 table: "Reviews",
                 column: "ProductId");
@@ -624,9 +594,6 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "Tipos");
 
             migrationBuilder.DropTable(
                 name: "Products");

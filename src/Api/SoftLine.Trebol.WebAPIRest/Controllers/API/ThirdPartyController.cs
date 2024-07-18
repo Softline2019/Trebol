@@ -31,6 +31,20 @@ namespace SoftLine.Trebol.WebAPIRest.Controllers.API
             return await _mediator.Send(request);
         }
 
+        [HttpPut("update", Name = "UpdateThirdParty")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<IActionResult> UpdateThirdParty([FromBody] UpdateThirdPartyCommand request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            await _mediator.Send(request);
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]

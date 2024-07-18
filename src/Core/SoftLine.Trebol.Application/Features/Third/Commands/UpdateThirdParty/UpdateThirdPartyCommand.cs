@@ -5,7 +5,7 @@ namespace SoftLine.Trebol.Application.Features.Third.Commands.UpdateThirdParty
     public class UpdateThirdPartyCommand : IRequest
     {
         public int Id { get; set; }
-        public decimal NIT { get; set; }
+        public int NIT { get; set; }
         public string? Class { get; set; }
         public string? Regime { get; set; }
         public decimal? VerificationDigitNIT { get; set; }

@@ -1,11 +1,11 @@
-﻿// Archivo: Trebol/Trebol/src/Core/SoftLine.Trebol.Application/Features/Third/Commands/CreateThirdParty/CreateThirdPartyCommandHandler.cs
-
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using SoftLine.Trebol.Application.Features.Third.Commands.CreateThirdParty;
 using SoftLine.Trebol.Application.Features.Third.Queries.Vms;
 using SoftLine.Trebol.Application.Persistence;
 using SoftLine.Trebol.Domain;
+using Microsoft.Extensions.Logging;
+using System;
 
 namespace SoftLine.Trebol.Application.Features.Third.Commands.CreateThird;
 
@@ -13,42 +13,79 @@ public class CreateThirdPartyCommandHandler : IRequestHandler<CreateThirdPartyCo
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly ILogger<CreateThirdPartyCommandHandler> _logger;
 
-    public CreateThirdPartyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public CreateThirdPartyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, ILogger<CreateThirdPartyCommandHandler> logger)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _logger = logger;
     }
 
     public async Task<ThirdPartyVm> Handle(CreateThirdPartyCommand request, CancellationToken cancellationToken)
     {
-        var thirdPartyEntity = _mapper.Map<ThirdParty>(request);
-        thirdPartyEntity.VerificationDigitNIT = CalculateVerificationDigit(request.NIT.ToString());
+        try
+        {
+            var thirdPartyEntity = _mapper.Map<ThirdParty>(request);
 
-        await _unitOfWork.Repository<ThirdParty>().AddAsync(thirdPartyEntity);
-        await _unitOfWork.Complete();
+            if (IsValidNIT(request.NIT))
+            {
+                thirdPartyEntity.VerificationDigitNIT = CalculateVerificationDigit(request.NIT.ToString());
+            }
+            else
+            {
+                _logger.LogWarning("NIT inválido: {NIT}", request.NIT);
+                throw new ArgumentException("NIT inválido");
+            }
 
-        return _mapper.Map<ThirdPartyVm>(thirdPartyEntity);
+            await _unitOfWork.Repository<ThirdParty>().AddAsync(thirdPartyEntity);
+            await _unitOfWork.Complete();
+
+            return _mapper.Map<ThirdPartyVm>(thirdPartyEntity);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error al crear el tercero");
+            throw;
+        }
     }
 
-    private int CalculateVerificationDigit(string documentNumber)
+    private bool IsValidNIT(long nit)
     {
-        int[] coefficients = { 3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71 };
-        int sum = 0;
-        int length = documentNumber.Length;
+        // Implementar la validación del NIT aquí si es necesario
+        return nit > 0; // Ejemplo básico de validación
+    }
 
-        for (int i = 0; i < length; i++)
+    private int CalculateVerificationDigit(string nit)
+    {
+        if (string.IsNullOrWhiteSpace(nit))
         {
-            int digit = int.Parse(documentNumber[length - i - 1].ToString());
-            sum += digit * coefficients[i];
+            throw new ArgumentException("El NIT no puede ser nulo o vacío.");
         }
 
-        int mod = sum % 11;
-        if (mod == 0 || mod == 1)
+        // Verificar que el NIT sea numérico
+        if (!long.TryParse(nit, out _))
         {
-            return 0;
+            throw new ArgumentException("El NIT contiene caracteres no numéricos.");
         }
 
-        return 11 - mod;
+        int[] coefficients = { 3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53 }; // Coeficientes para manejar hasta 12 dígitos
+        int valorCalculado = 0;
+        int aux = nit.Length - 1;
+
+        for (int i = 0; i < nit.Length; i++)
+        {
+            int digit = int.Parse(nit[aux - i].ToString());
+            valorCalculado += digit * coefficients[i];
+        }
+
+        int modulo = valorCalculado % 11;
+
+        if (modulo >= 2)
+        {
+            modulo = 11 - modulo;
+        }
+
+        return modulo;
     }
 }

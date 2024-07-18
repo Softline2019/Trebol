@@ -30,7 +30,7 @@ namespace SoftLine.Trebol.Application.Features.Pucs.Commands.UpdatePuc
             pucEntity.NombreCorto = request.NombreCorto;
             pucEntity.Cuenta = request.Cuenta;
             pucEntity.Nombre = request.Nombre;
-            pucEntity.TipoId = request.TipoId;
+            pucEntity.Tipo = request.Tipo;
             pucEntity.CodTributario = request.CodTributario;
             pucEntity.Digitable = request.Digitable;
 
