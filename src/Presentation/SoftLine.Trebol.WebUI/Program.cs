@@ -1,4 +1,5 @@
 using SoftLine.Trebol.WebUI.Components;
+using MatBlazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
+builder.Services.AddMatBlazor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

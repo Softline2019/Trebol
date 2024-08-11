@@ -1,0 +1,29 @@
+﻿@page "/companies"
+@rendermode InteractiveServer
+
+        <MatTabGroup @bind-ActiveIndex="@tabIndex">
+            <MatTab Label="Datos Generales">
+                <GeneralData/>
+            </MatTab>
+            <MatTab Label="Configuración">
+                <Configuration/>
+            </MatTab>
+           <MatTab Label="Tributaria/Comercial">
+               <Tax_Commercial/>
+            </MatTab>
+            <MatTab Label="Responsables">
+                Fourth Content
+            </MatTab>
+ 
+        </MatTabGroup>
+ 
+
+@code {
+
+    public int tabIndex = 0;
+
+    void ChangeTab(MouseEventArgs e)
+    {
+        tabIndex = tabIndex < 3 ? tabIndex + 1 : 0;
+    }
+}

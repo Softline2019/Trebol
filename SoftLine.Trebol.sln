@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3F811A34-4CA5-4475-BE43-194F543ACB5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftLine.Trebol.WebUI", "src\Presentation\SoftLine.Trebol.WebUI\SoftLine.Trebol.WebUI.csproj", "{64493CB4-DB3A-4653-9424-817FDB46BA47}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoftLine.Trebol.WebUI", "src\Presentation\SoftLine.Trebol.WebUI\SoftLine.Trebol.WebUI.csproj", "{64493CB4-DB3A-4653-9424-817FDB46BA47}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
