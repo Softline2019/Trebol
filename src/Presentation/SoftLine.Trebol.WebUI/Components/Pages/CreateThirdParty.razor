@@ -1,0 +1,160 @@
+﻿@* @page "/create-third-party"
+@inject HttpClient Http
+@using System.Net.Http.Json
+@using SoftLine.Trebol.Application.Features.Third.Commands.CreateThirdParty
+
+<h3>Create Third Party</h3>
+
+<EditForm Model="@thirdParty" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div>
+        <label>NIT:</label>
+        <InputNumber @bind-Value="thirdParty.NIT" />
+    </div>
+    <div>
+        <label>Class:</label>
+        <InputText @bind-Value="thirdParty.Class" />
+    </div>
+    <div>
+        <label>Regime:</label>
+        <InputText @bind-Value="thirdParty.Regime" />
+    </div>
+    <div>
+        <label>Verification Digit NIT:</label>
+        <InputNumber @bind-Value="thirdParty.VerificationDigitNIT" />
+    </div>
+    <div>
+        <label>NIT Code:</label>
+        <InputText @bind-Value="thirdParty.NITCode" />
+    </div>
+    <div>
+        <label>Business Name:</label>
+        <InputText @bind-Value="thirdParty.BusinessName" />
+    </div>
+    <div>
+        <label>Address:</label>
+        <InputText @bind-Value="thirdParty.Address" />
+    </div>
+    <div>
+        <label>City:</label>
+        <InputText @bind-Value="thirdParty.City" />
+    </div>
+    <div>
+        <label>Phone 1:</label>
+        <InputText @bind-Value="thirdParty.Phone1" />
+    </div>
+    <div>
+        <label>Phone 2:</label>
+        <InputText @bind-Value="thirdParty.Phone2" />
+    </div>
+    <div>
+        <label>Mobile:</label>
+        <InputText @bind-Value="thirdParty.Mobile" />
+    </div>
+    <div>
+        <label>Fax:</label>
+        <InputText @bind-Value="thirdParty.Fax" />
+    </div>
+    <div>
+        <label>Email:</label>
+        <InputText @bind-Value="thirdParty.Email" />
+    </div>
+    <div>
+        <label>First Name:</label>
+        <InputText @bind-Value="thirdParty.FirstName" />
+    </div>
+    <div>
+        <label>Middle Name:</label>
+        <InputText @bind-Value="thirdParty.MiddleName" />
+    </div>
+    <div>
+        <label>Last Name 1:</label>
+        <InputText @bind-Value="thirdParty.LastName1" />
+    </div>
+    <div>
+        <label>Last Name 2:</label>
+        <InputText @bind-Value="thirdParty.LastName2" />
+    </div>
+    <div>
+        <label>Country Code:</label>
+        <InputText @bind-Value="thirdParty.CountryCode" />
+    </div>
+    <div>
+        <label>Department Code:</label>
+        <InputText @bind-Value="thirdParty.DepartmentCode" />
+    </div>
+    <div>
+        <label>Economic Activity Code:</label>
+        <InputText @bind-Value="thirdParty.EconomicActivityCode" />
+    </div>
+    <div>
+        <label>Has Document:</label>
+        <InputText @bind-Value="thirdParty.HasDocument" />
+    </div>
+    <div>
+        <label>Is Mandator:</label>
+        <InputText @bind-Value="thirdParty.IsMandator" />
+    </div>
+    <div>
+        <label>Admission Date:</label>
+        <InputDate @bind-Value="thirdParty.AdmissionDate" />
+    </div>
+    <div>
+        <label>User Update:</label>
+        <InputText @bind-Value="thirdParty.UserUpdate" />
+    </div>
+    <div>
+        <label>Update Date:</label>
+        <InputDate @bind-Value="thirdParty.UpdateDate" />
+    </div>
+    <div>
+        <label>Tax Mailbox:</label>
+        <InputText @bind-Value="thirdParty.TaxMailbox" />
+    </div>
+    <div>
+        <label>Is Supplier:</label>
+        <InputText @bind-Value="thirdParty.IsSupplier" />
+    </div>
+    <div>
+        <label>Is Client:</label>
+        <InputText @bind-Value="thirdParty.IsClient" />
+    </div>
+    <div>
+        <label>Is Employee:</label>
+        <InputText @bind-Value="thirdParty.IsEmployee" />
+    </div>
+    <div>
+        <label>Is Beneficiary:</label>
+        <InputText @bind-Value="thirdParty.IsBeneficiary" />
+    </div>
+    <div>
+        <label>Company Short Name:</label>
+        <InputText @bind-Value="thirdParty.CompanyShortName" />
+    </div>
+    <div>
+        <label>User:</label>
+        <InputText @bind-Value="thirdParty.User" />
+    </div>
+
+    <button type="submit">Submit</button>
+</EditForm>
+
+@code {
+    private CreateThirdPartyCommand thirdParty = new CreateThirdPartyCommand();
+
+    private async Task HandleValidSubmit()
+    {
+        var response = await Http.PostAsJsonAsync("api/thirdparty/create", thirdParty);
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle success (e.g., show a message, redirect, etc.)
+        }
+        else
+        {
+            // Handle failure (e.g., show an error message)
+        }
+    }
+}
+ *@

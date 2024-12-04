@@ -1,0 +1,56 @@
+﻿@page "/puc"
+
+<h3>Puc</h3>
+
+<EditForm Model="model" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label class="form-label">Nombre Corto:</label>
+        <InputText @bind-Value="model.NombreCorto" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cuenta:</label>
+        <InputNumber @bind-Value="model.Cuenta" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Nombre:</label>
+        <InputText @bind-Value="model.Nombre" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Tipo ID:</label>
+        <InputNumber @bind-Value="model.TipoId" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Código Tributario:</label>
+        <InputNumber @bind-Value="model.CodTributario" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Digitable:</label>
+        <InputCheckbox @bind-Value="model.Digitable" class="form-check-input" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Puc</button>
+</EditForm>
+
+@code {
+    private PucModel model = new PucModel();
+
+    private void HandleValidSubmit()
+    {
+        // Manejar el envío del formulario aquí
+        Console.WriteLine("Formulario de Puc enviado correctamente!");
+    }
+
+    // Definición de la entidad PucModel para pruebas
+    public class PucModel
+    {
+        public string NombreCorto { get; set; } = string.Empty;
+        public int Cuenta { get; set; }
+        public string Nombre { get; set; } = string.Empty;
+        public int TipoId { get; set; }
+        public int CodTributario { get; set; }
+        public bool Digitable { get; set; }
+    }
+}

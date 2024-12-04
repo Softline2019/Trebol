@@ -5,6 +5,7 @@ using SoftLine.Trebol.Application.Features.Third.Commands.CreateThird;
 using SoftLine.Trebol.Domain;
 using SoftLine.Trebol.Domain.Common;
 using System.Diagnostics.Metrics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace SoftLine.Trebol.Infrastructure.Persistence;
 
@@ -76,7 +77,9 @@ public class TrebolDbContext : IdentityDbContext<User>
     public DbSet<Address>? Addresses { get; set; }
     public DbSet<Receipt>? Receipts { get; set; }
     public DbSet<ThirdParty>? ThirdParties { get; set; }
-
-
+    public DbSet<Company>? Companies { get; set; }
+    public DbSet<Tipo>? Tipos { get; set; }
+    public DbSet<Puc>? Pucs { get; set; }
+    public DbSet<Consecutive>? Consecutives { get; set; }
 
 }

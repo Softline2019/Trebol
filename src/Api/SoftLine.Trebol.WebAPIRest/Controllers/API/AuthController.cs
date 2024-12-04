@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SoftLine.Trebol.Application.Contracts.Infrastructure;
 using SoftLine.Trebol.Application.Features.Auths.Users.Commands.LoginUser;

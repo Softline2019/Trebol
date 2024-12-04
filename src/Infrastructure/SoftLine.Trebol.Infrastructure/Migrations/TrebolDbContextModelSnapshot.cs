@@ -233,6 +233,240 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Company", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AccountantProfessionalCard")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Address")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("AdministrationCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("BankReconciliation")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("BranchNumber")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("CashFlow")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CheckDigit")
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CommercialRegistration")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CompanyClass")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CompanyName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("CompanyType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CostCenter")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("CostCenterClosure")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CostCenterLevel1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CostCenterLevel2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CostCenterLevel3")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Counter")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CounterId")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DeclaringClass")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DepartmentCode")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("DescriptionOfLocal")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("Economic_Activity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Indicative")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("IndustryAndCommerceActivityCode")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastClosingDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LegalRepresentative")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("LegalRepresentativeID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level1")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level2")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level3")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level4")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level5")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level6")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level7")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Level8")
+                        .HasColumnType("int");
+
+                    b.Property<bool?>("LocalMoney")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MinimumSanction")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("NIT")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("NameShortCompany")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NitMajorCash")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("NitMinorCash")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool?>("ParallelMoney")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ParallelMoneycheck")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Phone1")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Phone2")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("ProfessionalCard")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PulledApart")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Regime")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("RepresentativeCard")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TaxAudit")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("TaxAuditorID")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TaxYear")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Consecutive", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdCompany")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Valor")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Consecutives");
+                });
+
             modelBuilder.Entity("SoftLine.Trebol.Domain.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -363,7 +597,7 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("SoftLine.Trebol.Domain.Receipt", b =>
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Puc", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -371,15 +605,20 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CodTributario")
+                        .HasColumnType("int");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FNCShort")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Cuenta")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Digitable")
+                        .HasColumnType("bit");
 
                     b.Property<int>("IdCompany")
                         .HasColumnType("int");
@@ -390,27 +629,73 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NR")
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreCorto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoId")
                         .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TipoId");
+
+                    b.ToTable("Pucs");
+                });
+
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Receipt", b =>
+                {
+                    b.Property<int>("NR")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NR"));
+
+                    b.Property<int>("CompInt")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompanyShortName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ConseOblig")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Consecutive")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("DocRef")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdCompany")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("ReceiptClosing")
                         .HasColumnType("bit");
 
-                    b.Property<string>("fcDocRef")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("fcName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("fnConsec")
+                    b.Property<int>("Receipts")
                         .HasColumnType("int");
 
-                    b.Property<int>("fnReceipt")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
+                    b.HasKey("NR");
 
                     b.ToTable("Receipts");
                 });
@@ -478,7 +763,7 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Class")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("CompanyShortName")
                         .HasColumnType("nvarchar(max)");
@@ -501,32 +786,32 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Fax")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Fax")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("HasDocument")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("HasDocument")
+                        .HasColumnType("bit");
 
                     b.Property<int>("IdCompany")
                         .HasColumnType("int");
 
-                    b.Property<string>("IsBeneficiary")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsBeneficiary")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsClient")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsClient")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsEmployee")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsEmployee")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsMandator")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool?>("IsMandator")
+                        .HasColumnType("bit");
 
-                    b.Property<string>("IsSupplier")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("IsSupplier")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -552,14 +837,14 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("NITCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone1")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Phone1")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Phone2")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<decimal?>("Phone2")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Regime")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<string>("TaxMailbox")
                         .HasColumnType("nvarchar(max)");
@@ -573,12 +858,46 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                     b.Property<string>("UserUpdate")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal?>("VerificationDigitNIT")
+                    b.Property<decimal>("VerificationDigitNIT")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("ThirdParties");
+                });
+
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Tipo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DescripcionTipo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdCompany")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NombreTipo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tipos");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.User", b =>
@@ -736,6 +1055,17 @@ namespace SoftLine.Trebol.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("SoftLine.Trebol.Domain.Puc", b =>
+                {
+                    b.HasOne("SoftLine.Trebol.Domain.Tipo", "Tipo")
+                        .WithMany()
+                        .HasForeignKey("TipoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tipo");
                 });
 
             modelBuilder.Entity("SoftLine.Trebol.Domain.Review", b =>
